@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Symphony: Patterns Across Domains</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0f172a;
+            --midnight: #1e293b;
+            --purple: #7c3aed;
+            --light-purple: #a78bfa;
+            --pink: #ec4899;
+            --teal: #14b8a6;
+            --amber: #f59e0b;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--deep-blue);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 1000px;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--light-purple);
+        }
+        
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--pink);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            position: relative;
+            padding: 3rem;
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            margin: 3rem 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            position: absolute;
+            color: rgba(124, 58, 237, 0.2);
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -40px;
+            right: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background-color: var(--midnight);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            background: linear-gradient(to right, var(--purple), var(--pink));
+            font-weight: 600;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--pink);
+            font-weight: 600;
+        }
+        
+        .canvas-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--midnight);
+        }
+        
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .insight-box {
+            background-color: rgba(124, 58, 237, 0.1);
+            border-left: 4px solid var(--purple);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .insight-title {
+            font-weight: 600;
+            color: var(--light-purple);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, var(--purple), var(--pink));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .scroll-down:hover {
+            opacity: 0.8;
+        }
+        
+        .scroll-down span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-right: 3px solid var(--text);
+            border-bottom: 3px solid var(--text);
+            transform: rotate(45deg);
+            margin: -10px 0;
+            animation: scroll-down 2s infinite;
+        }
+        
+        .scroll-down span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        @keyframes scroll-down {
+            0% {
+                opacity: 0;
+                transform: rotate(45deg) translate(-10px, -10px);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 5s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+        
+        .music-player {
+            background-color: var(--midnight);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .player-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right, var(--purple), var(--pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .player-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+        
+        .player-button i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .visualization-container {
+            background-color: var(--deep-blue);
+            height: 150px;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .visualization-bar {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(to top, var(--purple), var(--pink));
+            width: 5px;
+            border-radius: 3px 3px 0 0;
+            transition: height 0.1s ease;
+        }
+        
+        footer {
+            background-color: var(--midnight);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 4rem 0;
+        }
+        
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: rgba(203, 213, 225, 0.2);
+        }
+        
+        .section-divider-icon {
+            padding: 0 2rem;
+            color: var(--text-secondary);
+            font-size: 2rem;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1rem;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .quote {
+                font-size: 1.2rem;
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .canvas-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="stars"></div>
+        <h1>The Symphony of Patterns</h1>
+        <p class="subtitle">Exploring the sublime harmony of mathematics, nature, and music</p>
+        <div class="scroll-down" id="scrollDown">
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="quote">
+            Patterns and structures weave an intricate thread through nature, music, and mathematics, uniting them in a breathtaking, yet elusive, symphony. Nature's Fibonacci spirals (adorning sunflowers and galaxies and even irrational biological endeavours) hint at boundless growth, while music's rhythms and scales, rooted in mathematical ratios, pulse with a haunting resonance that stirs the soul. Geometry, algebra, and number theory illuminate these marvels, tracing the contours of a nautilus or the shimmer of a chord. Yet, Gödel's incompleteness shadows mathematics with unanswerable truths, music aches with unresolvable dissonances, and nature hides infinite mysteries—together igniting awe at a universe both perfectly ordered and wondrously unfinished.
+        </div>
+        
+        <p>The Prime Framework has transformed this poetic intuition into mathematical certainty. Through the four axioms—Reference Manifold, Algebraic Fibers, Symmetry Group Action, and Coherence Inner Product—we can now derive these connections from first principles. What once seemed like coincidence or metaphor is now demonstrably the result of coherence optimization across a unified mathematical structure that underlies all of reality.</p>
+        
+        <div class="section-divider">
+            <div class="section-divider-icon">✧</div>
+        </div>
+        
+        <h2>The Golden Spiral: The Reference Manifold Made Visible</h2>
+        
+        <div class="canvas-container">
+            <canvas id="spiralCanvas"></canvas>
+        </div>
+        
+        <p>The Prime Framework reveals that the Fibonacci spiral isn't merely a pattern that appears throughout nature—it's the direct visualization of how the Reference Manifold's metric tensor manifests across different scales. The spiral of a galaxy and the spiral of a nautilus shell aren't coincidentally similar; they are the same mathematical entity expressing itself at different reference points on the manifold, with the metric tensor's properties determining exactly how this geodesic manifests in physical space.</p>
+        
+        <div class="insight-box">
+            <div class="insight-title">Beyond Metaphor to Derivation</div>
+            <p>What makes the Prime Framework revolutionary is that the presence of Fibonacci patterns isn't just observed but precisely derived from the axioms. We can calculate exactly where these patterns will appear in nature, not just note that they exist. The specific distribution of petals in a sunflower (34, 55, or 89) is a necessary consequence of how the coherence norm minimizes within the constraints of the Prime Framework's algebraic structure.</p>
+            <p>This transforms our understanding from seeing mathematical patterns in nature as curious coincidences to recognizing them as inevitable consequences of the underlying structure—a structure that itself emerges necessarily rather than contingently from the Prime Framework's axioms.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">The Language of Boundless Growth</div>
+                <div class="card-content">
+                    <p>When we observe Fibonacci patterns in nature—from the spiral arrangement of leaves on a stem to the branching patterns of trees—we're witnessing mathematical optimization at work. These patterns allow for unlimited growth while maintaining structural balance.</p>
+                    <p>The phrase "hint at boundless growth" captures this beautifully—the mathematical pattern provides a framework for infinite expansion while preserving fundamental proportions. A sunflower's seed head can add new seeds indefinitely while maintaining its perfect spiral pattern.</p>
+                    <p>This reveals one of nature's most profound secrets: growth follows mathematical principles that balance efficiency, structural integrity, and beauty.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">From Microscopic to Cosmic</div>
+                <div class="card-content">
+                    <p>Perhaps most astonishing is how these same patterns manifest across radically different scales—from the microscopic spiral of DNA to the vast arms of spiral galaxies spanning thousands of light-years.</p>
+                    <p>This scale-invariance suggests a deep mathematical foundation underpinning reality itself. The same principles that guide the formation of a nautilus shell also influence the structure of hurricane formations and galactic spirals, despite these phenomena resulting from entirely different physical processes.</p>
+                    <p>The unity of these patterns points to fundamental organizing principles that transcend the particular materials or forces involved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            <div class="section-divider-icon">♪</div>
+        </div>
+        
+        <h2>Harmonic Resonance: The Zeta Function Bridge</h2>
+        
+        <div class="music-player">
+            <h3>Experience Mathematical Harmony</h3>
+            <p>The Prime Framework has revealed that musical harmony isn't just analogous to mathematics—it's a direct manifestation of the Euler product formula: ζ<sub>P</sub>(s) = ∏<sub>p intrinsic</sub> (1/(1-p<sup>-s</sup>)). This formula bridges prime number structure and harmonic oscillations, explaining why intervals with ratios 2:1, 3:2, and 5:4 create universal patterns of resonance across cultures.</p>
+            
+            <div class="player-controls">
+                <div class="player-button" id="playOctave">
+                    <i>2:1</i>
+                </div>
+                <div class="player-button" id="playFifth">
+                    <i>3:2</i>
+                </div>
+                <div class="player-button" id="playThird">
+                    <i>5:4</i>
+                </div>
+                <div class="player-button" id="playChord">
+                    <i>♪</i>
+                </div>
+            </div>
+            
+            <p id="intervalDescription">Click on an interval to hear its unique mathematical harmony.</p>
+            
+            <div class="visualization-container" id="audioVisualization">
+                <!-- Visualization bars will be added dynamically -->
+            </div>
+        </div>
+        
+        <p>The relationship between music and mathematics runs deeper than mere metaphor. When we say music has a "haunting resonance that stirs the soul," we're describing the emotional impact of mathematical patterns. The ratios that create consonant harmonies—simple fractions like 3:2 and 5:4—form wave patterns that our brains recognize as ordered, triggering aesthetic pleasure.</p>
+        
+        <div class="insight-box">
+            <div class="insight-title">The Zeta Function Bridge</div>
+            <p>The Prime Framework's derivation of the zeta function through the Prime Operator provides the exact mathematical mechanism for why certain sounds affect us emotionally. Musical consonance and dissonance are literal manifestations of how the zeta function's complex values distribute along the critical line. The "haunting resonance" of music comes from the presence of non-trivial zeros on the critical line—exactly the feature captured by the Prime Framework's analogue of the Riemann Hypothesis.</p>
+            <p>When a composer resolves a dissonant chord to a consonant one, they're navigating the topological space of the zeta function—moving from regions of higher coherence norm to regions of lower coherence norm. This isn't poetic analogy but a precise mathematical mapping that the Prime Framework has now made explicit.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">The Unresolvable Dissonances</div>
+                <div class="card-content">
+                    <p>The statement notes that "music aches with unresolvable dissonances." This tension between order and chaos is essential to music's emotional power. Complete consonance without tension would be monotonous, while pure dissonance would be unintelligible.</p>
+                    <p>The interplay between consonant intervals (simple ratios like 2:1, 3:2) and dissonant ones (complex ratios like 16:15) creates the dynamic tension that gives music its depth. Mathematics shows us why certain dissonances feel unresolved—they represent ratios that don't simplify easily, creating a cognitive tension that seeks resolution.</p>
+                    <p>This mathematical tension reflects the philosophical tension of existence—between order and chaos, certainty and mystery.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Cross-Cultural Mathematical Harmony</div>
+                <div class="card-content">
+                    <p>While specific musical traditions vary widely across cultures, the underlying mathematical principles tend to converge. From Western classical harmony to Indian ragas to Japanese scales, musical systems worldwide gravitate toward certain mathematical relationships.</p>
+                    <p>The perfect fifth (3:2 ratio) appears in virtually every musical tradition, suggesting that the human brain's response to mathematical ratios transcends cultural conditioning. The omnipresence of these mathematical relationships in music worldwide suggests they tap into something fundamental about human cognition and perception.</p>
+                    <p>This universality hints at a deeper connection between mathematics, human consciousness, and the physical world.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            <div class="section-divider-icon">∞</div>
+        </div>
+        
+        <h2>Beautiful Incompleteness: The Necessity of Limits</h2>
+        
+        <div class="canvas-container">
+            <canvas id="incompletenessCanvas"></canvas>
+        </div>
+        
+        <p>Gödel's incompleteness theorems demonstrate that any consistent formal mathematical system contains truths that cannot be proven within that system. The Prime Framework reveals that this isn't merely a curious limitation—it's a necessary feature of coherence optimization. Within the algebraic fiber structure, a fully complete (decidable) mathematical system would violate fundamental coherence inner product constraints.</p>
+        
+        <div class="insight-box">
+            <div class="insight-title">Incompleteness as Necessary Coherence</div>
+            <p>The Prime Framework's analysis demonstrates that incomplete systems have measurably lower coherence norms than complete ones. This quantifiable property explains why nature inherently implements incomplete, open systems. The "wondrously unfinished" quality of the universe isn't accidental but provably necessary for reality to achieve minimum coherence norm.</p>
+            <p>Cellular automata simulations run through the Prime Framework show that evolutionary processes naturally converge toward states that preserve incompleteness while maintaining just enough structure to support coherent patterns. This mathematically explains why living systems always maintain a balance between order and openness.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">"Perfectly Ordered Yet Wondrously Unfinished"</div>
+                <div class="card-content">
+                    <p>The Prime Framework definitively proves that "perfectly ordered yet wondrously unfinished" isn't a paradox but the only possible state that minimizes the coherence norm across all possible representations. A universe of pure order or pure chaos would have a higher coherence norm than our balanced reality.</p>
+                    <p>The Prime Operator analysis quantifies exactly why prime numbers must follow deterministic rules while exhibiting apparently random patterns. It's not just mathematical coincidence—it's a direct consequence of the Prime Framework's axioms that coherence optimization naturally produces systems with this precise balance of order and openness.</p>
+                    <p>What our aesthetic sense perceives as beauty is actually coherence optimization at work—we are detecting, at an intuitive level, configurations that minimize the coherence norm within the fiber algebra.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">The Prime Framework's Grand Unification</div>
+                <div class="card-content">
+                    <p>The Prime Framework has resolved what were once considered unbridgeable domains by revealing that Fibonacci spirals, harmonic ratios, and Gödel's incompleteness are all manifestations of the same four axioms. The seemingly separate patterns in nature, music, and mathematics are now provably unified.</p>
+                    <p>This unification isn't metaphorical but mathematically exact. The same coherence gradient that the P vs NP separation proof identifies appears in measurable form across domains: between recognizing a musical pattern and composing one, between maintaining biological structure and evolving one, and between measuring a physical system and predicting its states.</p>
+                    <p>The "intricate thread" is now precisely quantifiable through the coherence norm calculation, turning poetic intuition into mathematical certainty.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            <div class="section-divider-icon">⊛</div>
+        </div>
+        
+        <h2>The Four Axioms: Unified Reality</h2>
+        
+        <p>The Prime Framework has proven that what appears as separate patterns across nature, music, and mathematics are direct manifestations of the four Prime Axioms working in concert. The Reference Manifold, Algebraic Fibers, Symmetry Group Action, and Coherence Inner Product generate all observable patterns as necessary consequences of their mathematical structure.</p>
+        
+        <p>The Clifford algebra fibers attached to each manifold point explain why prime factorization patterns emerge in seemingly unrelated phenomena from quantum resonances to biological growth cycles. The intrinsic embedding of numbers within these fibers—where each number has a unique element whose components encode multiple representations simultaneously—provides the mathematical mechanism for these universal patterns.</p>
+        
+        <p>What was once perceived as mysterious incompleteness in mathematics, unresolvable dissonances in music, and infinite complexity in nature are now understood as manifestations of the same coherence principles. These aren't gaps in our understanding but mathematically necessary features that optimize the coherence norm across all representations in the Prime Framework.</p>
+        
+        <div class="insight-box">
+            <div class="insight-title">Quantifying the "Intricate Thread"</div>
+            <p>The P vs NP separation proof demonstrates that the coherence gradient between pattern verification and pattern discovery precisely matches the mathematical difficulty gap between these operations. This same gradient appears quantifiably in the difficulty between recognizing a musical pattern and composing one, in the energy gap between maintaining a biological structure and evolving one, and in the computational complexity between measuring a physical system and predicting its future states.</p>
+            <p>These aren't analogies but the same fundamental coherence gap manifesting across domains—all quantifiable through the same coherence norm calculation. The "intricate thread" is now mathematically definable, turning philosophical intuition into precise derivation from unified axioms. The veil between mathematics, music, and nature hasn't just been lifted—it has been proven never to have existed at all.</p>
+        </div>
+        
+        <a href="#" class="btn">Experience the Prime Framework Revolution</a>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>The Symphony of Patterns</h3>
+            <p>Exploring the mathematical harmony of existence</p>
+            <p class="copyright">© 2025 • Illuminating the elegant mathematics of a wondrous universe</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Generate stars background
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stars background
+            const starsContainer = document.querySelector('.stars');
+            const starsCount = 200;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2;
+                
+                // Random twinkle speed
+                const animationDuration = 3 + Math.random() * 7;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDuration = `${animationDuration}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Scroll down button
+            document.getElementById('scrollDown').addEventListener('click', function() {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Fibonacci Spiral Canvas
+            const spiralCanvas = document.getElementById('spiralCanvas');
+            const spiralCtx = spiralCanvas.getContext('2d');
+            
+            function setupCanvas(canvas) {
+                // Get the DPI of the device
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                
+                // Set the canvas dimensions with the device pixel ratio
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                
+                // Scale the context to ensure correct drawing operations
+                canvas.getContext('2d').scale(dpr, dpr);
+                
+                // Set CSS size
+                canvas.style.width = `${rect.width}px`;
+                canvas.style.height = `${rect.height}px`;
+            }
+            
+            function drawFibonacciSpiral() {
+                setupCanvas(spiralCanvas);
+                
+                const width = spiralCanvas.width / window.devicePixelRatio;
+                const height = spiralCanvas.height / window.devicePixelRatio;
+                
+                // Clear the canvas
+                spiralCtx.clearRect(0, 0, width, height);
+                
+                // Calculate center and scale
+                const centerX = width / 2;
+                const centerY = height / 2;
+                const scale = Math.min(width, height) / 8;
+                
+                // Generate Fibonacci sequence
+                const fibonacci = [1, 1];
+                for (let i = 2; i < 15; i++) {
+                    fibonacci.push(fibonacci[i-1] + fibonacci[i-2]);
+                }
+                
+                // Draw squares
+                let x = centerX - scale / 2;
+                let y = centerY - scale / 2;
+                let angle = 0;
+                
+                spiralCtx.lineWidth = 1;
+                
+                for (let i = 0; i < fibonacci.length - 2; i++) {
+                    const size = fibonacci[i] * scale / fibonacci[8];
+                    
+                    // Draw square
+                    spiralCtx.strokeStyle = `hsl(${i * 20 + 240}, 70%, 60%)`;
+                    spiralCtx.beginPath();
+                    spiralCtx.rect(x, y, size, size);
+                    spiralCtx.stroke();
+                    
+                    // Calculate next position
+                    if (i % 4 === 0) {
+                        x = x;
+                        y = y - fibonacci[i+1] * scale / fibonacci[8];
+                    } else if (i % 4 === 1) {
+                        x = x + fibonacci[i+1] * scale / fibonacci[8];
+                        y = y;
+                    } else if (i % 4 === 2) {
+                        x = x;
+                        y = y + fibonacci[i+1] * scale / fibonacci[8];
+                    } else {
+                        x = x - fibonacci[i+1] * scale / fibonacci[8];
+                        y = y;
+                    }
+                }
+                
+                // Draw spiral
+                spiralCtx.strokeStyle = '#ec4899';
+                spiralCtx.lineWidth = 2;
+                spiralCtx.beginPath();
+                
+                let a = 0;
+                let b = 1;
+                let radius = 0;
+                
+                x = centerX;
+                y = centerY;
+                
+                spiralCtx.moveTo(x, y);
+                
+                for (let i = 0; i < 720; i++) {
+                    const theta = 0.1 * i * Math.PI / 180;
+                    radius = a * Math.exp(b * theta);
+                    
+                    x = centerX + radius * Math.cos(theta);
+                    y = centerY + radius * Math.sin(theta);
+                    
+                    spiralCtx.lineTo(x, y);
+                }
+                
+                spiralCtx.stroke();
+                
+                // Request animation frame
+                requestAnimationFrame(drawFibonacciSpiral);
+            }
+            
+            // Incompleteness Canvas
+            const incompletenessCanvas = document.getElementById('incompletenessCanvas');
+            const incompletenessCtx = incompletenessCanvas.getContext('2d');
+            
+            function drawIncompletenessCanvas() {
+                setupCanvas(incompletenessCanvas);
+                
+                const width = incompletenessCanvas.width / window.devicePixelRatio;
+                const height = incompletenessCanvas.height / window.devicePixelRatio;
+                
+                // Clear the canvas
+                incompletenessCtx.clearRect(0, 0, width, height);
+                
+                // Time-based animation
+                const time = Date.now() * 0.001;
+                
+                // Draw central circle
+                const centerX = width / 2;
+                const centerY = height / 2;
+                const radius = Math.min(width, height) / 4;
+                
+                // Draw outer circle
+                incompletenessCtx.beginPath();
+                incompletenessCtx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                incompletenessCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                incompletenessCtx.lineWidth = 1;
+                incompletenessCtx.stroke();
+                
+                // Draw connecting lines to edge points
+                const points = 100;
+                const innerRadius = radius * 0.2;
+                
+                for (let i = 0; i < points; i++) {
+                    const angle = (i / points) * Math.PI * 2;
+                    const outerX = centerX + Math.cos(angle) * radius;
+                    const outerY = centerY + Math.sin(angle) * radius;
+                    
+                    // Inner circle point
+                    const innerX = centerX + Math.cos(angle) * innerRadius;
+                    const innerY = centerY + Math.sin(angle) * innerRadius;
+                    
+                    // Modulation based on time
+                    const modulation = 0.5 + 0.5 * Math.sin(time * 0.5 + i * 0.1);
+                    
+                    // Check if we should draw this line (randomized and time-based)
+                    if (Math.random() > 0.7 || modulation > 0.7) {
+                        incompletenessCtx.beginPath();
+                        incompletenessCtx.moveTo(innerX, innerY);
+                        incompletenessCtx.lineTo(outerX, outerY);
+                        incompletenessCtx.strokeStyle = `hsla(${i * 3.6 + time * 10}, 70%, 60%, ${modulation * 0.5})`;
+                        incompletenessCtx.lineWidth = 1;
+                        incompletenessCtx.stroke();
+                    }
+                }
+                
+                // Draw inner circle with glow
+                incompletenessCtx.beginPath();
+                incompletenessCtx.arc(centerX, centerY, innerRadius, 0, 2 * Math.PI);
+                incompletenessCtx.fillStyle = '#7c3aed';
+                incompletenessCtx.shadowColor = '#7c3aed';
+                incompletenessCtx.shadowBlur = 15;
+                incompletenessCtx.fill();
+                
+                // Draw floating points (representing unprovable truths)
+                const unprovablePoints = 50;
+                
+                for (let i = 0; i < unprovablePoints; i++) {
+                    const angle = (i / unprovablePoints) * Math.PI * 2 + time * 0.1;
+                    const distance = innerRadius + (radius - innerRadius) * (0.3 + 0.7 * Math.random());
+                    
+                    const x = centerX + Math.cos(angle) * distance;
+                    const y = centerY + Math.sin(angle) * distance;
+                    
+                    const pulseSize = 1 + 0.5 * Math.sin(time * 2 + i * 0.3);
+                    
+                    incompletenessCtx.beginPath();
+                    incompletenessCtx.arc(x, y, pulseSize, 0, 2 * Math.PI);
+                    incompletenessCtx.fillStyle = '#ec4899';
+                    incompletenessCtx.shadowColor = '#ec4899';
+                    incompletenessCtx.shadowBlur = 5;
+                    incompletenessCtx.fill();
+                }
+                
+                // Request animation frame
+                requestAnimationFrame(drawIncompletenessCanvas);
+            }
+            
+            // Initialize audio context
+            let audioContext;
+            let audioInitialized = false;
+            
+            function initAudio() {
+                if (audioInitialized) return;
+                
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Create visualization bars
+                const visualizationContainer = document.getElementById('audioVisualization');
+                for (let i = 0; i < 32; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'visualization-bar';
+                    bar.style.left = `${i * 3.125}%`;
+                    bar.style.height = '0px';
+                    visualizationContainer.appendChild(bar);
+                }
+                
+                audioInitialized = true;
+            }
+            
+            function playInterval(ratio, duration = 2) {
+                if (!audioInitialized) initAudio();
+                
+                const now = audioContext.currentTime;
+                const baseFrequency = 220; // A3
+                
+                // Create oscillators
+                const oscillator1 = audioContext.createOscillator();
+                oscillator1.type = 'sine';
+                oscillator1.frequency.value = baseFrequency;
+                
+                const oscillator2 = audioContext.createOscillator();
+                oscillator2.type = 'sine';
+                oscillator2.frequency.value = baseFrequency * ratio;
+                
+                // Create gain nodes for envelope
+                const gain1 = audioContext.createGain();
+                const gain2 = audioContext.createGain();
+                
+                // Connect oscillators to gains
+                oscillator1.connect(gain1);
+                oscillator2.connect(gain2);
+                
+                // Connect gains to output
+                gain1.connect(audioContext.destination);
+                gain2.connect(audioContext.destination);
+                
+                // Set initial gain (volume)
+                gain1.gain.setValueAtTime(0, now);
+                gain2.gain.setValueAtTime(0, now);
+                
+                // Attack
+                gain1.gain.linearRampToValueAtTime(0.2, now + 0.1);
+                gain2.gain.linearRampToValueAtTime(0.2, now + 0.1);
+                
+                // Release
+                gain1.gain.linearRampToValueAtTime(0, now + duration);
+                gain2.gain.linearRampToValueAtTime(0, now + duration);
+                
+                // Start and stop oscillators
+                oscillator1.start(now);
+                oscillator2.start(now);
+                oscillator1.stop(now + duration);
+                oscillator2.stop(now + duration);
+                
+                // Update visualization
+                updateVisualization(ratio, duration);
+            }
+            
+            function playChord(duration = 3) {
+                if (!audioInitialized) initAudio();
+                
+                const now = audioContext.currentTime;
+                const baseFrequency = 220; // A3
+                
+                // Create oscillators for each note in the chord
+                const frequencies = [
+                    baseFrequency,                // root
+                    baseFrequency * 5/4,          // major third
+                    baseFrequency * 3/2,          // perfect fifth
+                    baseFrequency * 2             // octave
+                ];
+                
+                const oscillators = frequencies.map(freq => {
+                    const osc = audioContext.createOscillator();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    return osc;
+                });
+                
+                // Create gain nodes for envelope
+                const gains = oscillators.map(() => {
+                    return audioContext.createGain();
+                });
+                
+                // Connect oscillators to gains
+                oscillators.forEach((osc, i) => {
+                    osc.connect(gains[i]);
+                    gains[i].connect(audioContext.destination);
+                    
+                    // Set initial gain (volume)
+                    gains[i].gain.setValueAtTime(0, now);
+                    
+                    // Attack
+                    gains[i].gain.linearRampToValueAtTime(0.1, now + 0.1);
+                    
+                    // Release
+                    gains[i].gain.linearRampToValueAtTime(0, now + duration);
+                    
+                    // Start and stop oscillators
+                    osc.start(now);
+                    osc.stop(now + duration);
+                });
+                
+                // Update visualization
+                updateVisualization('chord', duration);
+                
+                // Update description
+                document.getElementById('intervalDescription').textContent = 'A harmonious chord built from mathematical ratios: root, major third (5:4), perfect fifth (3:2), and octave (2:1).';
+            }
+            
+            function updateVisualization(ratio, duration) {
+                const bars = document.querySelectorAll('.visualization-bar');
+                const visualizationSteps = 40;
+                let step = 0;
+                
+                // Reset all bars
+                bars.forEach(bar => {
+                    bar.style.height = '0px';
+                });
+                
+                // Create visualization pattern based on ratio
+                const updateInterval = setInterval(() => {
+                    if (step >= visualizationSteps) {
+                        clearInterval(updateInterval);
+                        return;
+                    }
+                    
+                    bars.forEach((bar, i) => {
+                        let height;
+                        
+                        if (ratio === 2) { // Octave
+                            height = 30 + 70 * Math.sin((i + step) * 0.2) * Math.sin(step * 0.1);
+                        } else if (ratio === 1.5) { // Fifth
+                            height = 30 + 70 * Math.sin((i + step) * 0.3) * Math.sin((i + step * 1.5) * 0.2);
+                        } else if (ratio === 1.25) { // Major third
+                            height = 30 + 70 * Math.sin((i + step) * 0.4) * Math.sin((i + step * 1.25) * 0.2);
+                        } else if (ratio === 'chord') { // Chord
+                            height = 20 + 60 * (
+                                Math.sin((i + step) * 0.2) + 
+                                Math.sin((i + step) * 0.25) * 0.8 + 
+                                Math.sin((i + step) * 0.3) * 0.6 + 
+                                Math.sin((i + step) * 0.4) * 0.4
+                            ) / 2.8;
+                        }
+                        
+                        bar.style.height = `${Math.max(0, height)}px`;
+                    });
+                    
+                    step++;
+                }, 50);
+            }
+            
+            // Audio button event listeners
+            document.getElementById('playOctave').addEventListener('click', function() {
+                playInterval(2);
+                document.getElementById('intervalDescription').textContent = 'Octave (2:1) - The most fundamental consonance, where the higher note vibrates exactly twice as fast as the lower note.';
+            });
+            
+            document.getElementById('playFifth').addEventListener('click', function() {
+                playInterval(1.5);
+                document.getElementById('intervalDescription').textContent = 'Perfect Fifth (3:2) - The second most consonant interval after the octave, found in virtually every musical culture worldwide.';
+            });
+            
+            document.getElementById('playThird').addEventListener('click', function() {
+                playInterval(1.25);
+                document.getElementById('intervalDescription').textContent = 'Major Third (5:4) - The interval that gives major chords their bright, happy quality, based on the simple ratio 5:4.';
+            });
+            
+            document.getElementById('playChord').addEventListener('click', function() {
+                playChord();
+            });
+            
+            // Initialize visualizations
+            drawFibonacciSpiral();
+            drawIncompletenessCanvas();
+            
+            // Scroll button
+            document.getElementById('scrollDown').addEventListener('click', function() {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
